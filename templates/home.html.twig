@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %} {% block title %} Articles à votre disposition {% endblock %} {% block header %}
+
+<h2>Voici le header</h2>
+
+{% endblock %} {% block body %}
+<div class="container">
+    <div class="jumbotron mt-3">
+        <h1 class="display-5">Bienvenue chez Stark Industries</h1>
+        <p class="lead">Venez voir notre collection d'armure MK</p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-info btn-lg" href="{{ path('ads_index') }}" role="button">Voir les articles </a>
+        </p>
+    </div>
+
+    <h2 class="h1 mt-3 mb-4"> </h2>
+
+
+</div>
+{% endblock %}
