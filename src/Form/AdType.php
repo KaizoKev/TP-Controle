@@ -2,30 +2,34 @@
 
 namespace App\Form;
 
-use App\Entity\Ad;
+use App\Form\ImageType;
+use App\Entity\Articles;
 use Symfony\Component\Form\AbstractType;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class AdType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('slug')
-            ->add('price')
-            ->add('introdution')
-            ->add('content')
-            ->add('coverImage')
-            ->add('rooms')
+            ->add('libelle', TextType::class)
+            ->add('prix', MoneyType::class)
+            ->add('description', TextareaType::class)
+            ->add('image', UrlType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Ad::class,
+            'data_class' => Articles::class,
         ]);
     }
 }

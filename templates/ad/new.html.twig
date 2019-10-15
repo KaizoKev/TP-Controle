@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} {% block title %} Création d'une annonce {% endblock %} {% form_theme form _self %} {% block body %}
+
+<div class="container form-1">
+    <h1 class="title-h1">Créer une nouvelle annonce</h1>
+
+    {{ form_start(form) }} {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Crée la nouvelle annonce.</button>
+    <a href="{{ path('liste_articles') }}" class="btn btn-primary">
+        Annuler
+    </a> {{ form_end(form) }}
+</div>
+{% endblock %} {% block javascripts %}
+
+<script src="/js/ad.js"></script>
+</script>
+
+{% endblock %}

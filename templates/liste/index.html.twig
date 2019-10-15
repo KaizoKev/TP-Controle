@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %} {% block title %}La liste des articles{% endblock %} {% block body %}
+<div class="container">
+    <table>
+        <tr>
+            <td>Identifiant</td>
+            <td>Libelle</td>
+            <td>Prix</td>
+            <td>
+                <a href="{{ path('ads_create') }}"><button class=" btn btn-warning ">Nouveau</button></a></td>
+        </tr>
+        {% for ad in ads %}
+        <tr>
+            <td>{{ ad.id }}</td>
+            <td>{{ ad.libelle }}</td>
+            <td>{{ ad.prix }} euros</td>
+            <td><a href="{{ path( 'ads_edit', { 'libelle': ad.libelle}) }} " class="btn btn-primary ">Modifier</a></td>
+            <td><a href="{{ path( 'ads_delete', { 'libelle': ad.libelle}) }} " class="btn btn-danger ">Supprimer</a></td>
+
+        </tr>
+        {% endfor %}
+        <tr>
+
+        </tr>
+    </table>
+</div>
+
+
+{% endblock %}

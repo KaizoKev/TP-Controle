@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
 
-        <a class="navbar-brand" style="color:white;" href=" {{ path('homepage')}} ">Stark Industries</a>
+        <a class="navbar-brand" style="color:white;" href=" {{ path('homepage')}} ">Stark Industrie</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link" style="color:white;" href="{{ path('ads_index') }}"> Articles </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="{{ path('liste_articles') }}">Liste des Articles </a>
+                </li>
 
             </ul>
             <ul>
@@ -34,8 +37,16 @@
             </ul>
         </div>
     </nav>
+    {% for label, messages in app.flashes %}
+    <div class="container" style="margin-top:90px;">
+        <div class="alert alert-{{ label }}">
+            {% for message in messages %}
+            <p> {{ message | raw }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %} {% block body %} {% endblock %}
 
-    {% block body %} {% endblock %}
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>

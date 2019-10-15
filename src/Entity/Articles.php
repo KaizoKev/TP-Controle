@@ -2,10 +2,16 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
+ * @UniqueEntity(
+ *  fields={"libelle"},
+ *  message="Un autre article possède déjà ce libelle, merci de le modifier"
+ * )
  */
 class Articles
 {
@@ -18,16 +24,19 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=10, max=255, minMessage ="Le libellé doit faire plus de 5 caractère !", maxMessage="Le titre ne peut faire plus de 255 caractère !" )
      */
     private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="float")
+     * @Assert\Length(min=0, max=500, maxMessage="Le prix ne doit pas dépasser 500euros !" )
      */
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
+     * @Assert\Length(min=10, max=200, minMessage ="Votre description doit faire moins de 10 caractères !", maxMessage="La description ne doit pas dépassé 200 caractères" )
      */
     private $description;
 
